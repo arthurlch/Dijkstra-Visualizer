@@ -18,7 +18,13 @@ export default class DijkstraVisualizer extends Component {
     for (let row = 0; row < numberOfRow; row++) {
       const currRow = [];
       for (let col = 0; col < numberOfColumn; col++) {
-        currRow.push([]);
+        const currNode = {
+          col,
+          row,
+          isStart: row === 15 && col === 5,
+          isFinish: row === 15 && col === 35,
+        };
+        currRow.push(currNode);
       }
       nodes.push(currRow);
     }
@@ -32,10 +38,13 @@ export default class DijkstraVisualizer extends Component {
       <div className='grid'>
         {nodes.map((row, rowIndex) => {
           return (
-            <div className='node-wrapper'>
-              {row.map((node, nodeIndex) => (
-                <Node />
-              ))}
+            <div className='node-wrapper' key={rowIndex}>
+              {row.map((node, nodeIndex) => {
+                const { isStart, isFinish } = node;
+                return (
+                  <Node key={nodeIndex} isStart={isStart} isFinish={isFinish} />
+                );
+              })}
             </div>
           );
         })}
