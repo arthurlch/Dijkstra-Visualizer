@@ -1,4 +1,5 @@
 import { React, Component } from 'react';
+import './Node.css';
 
 export default class Node extends Component {
   constructor(props) {
@@ -6,10 +7,6 @@ export default class Node extends Component {
     this.state = {};
   }
   render() {
-    return (
-      <div>
-        <h2>test</h2>
-      </div>
-    );
+    return <div className='node'></div>;
   }
 }
