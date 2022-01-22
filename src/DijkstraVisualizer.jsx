@@ -1,4 +1,5 @@
 import { React, Component } from 'react';
+import './DijkstraVisualizer.css';
 import Node from './Components/Node/Node';
 
 export default class DijkstraVisualizer extends Component {
@@ -12,9 +13,11 @@ export default class DijkstraVisualizer extends Component {
   componentDidMount() {
     // draw the grid
     const nodes = [];
-    for (let row = 0; row < 15; row++) {
+    let numberOfRow = 25;
+    let numberOfColumn = 40;
+    for (let row = 0; row < numberOfRow; row++) {
       const currRow = [];
-      for (let col = 0; col < 40; col++) {
+      for (let col = 0; col < numberOfColumn; col++) {
         currRow.push([]);
       }
       nodes.push(currRow);
@@ -29,9 +32,9 @@ export default class DijkstraVisualizer extends Component {
       <div className='grid'>
         {nodes.map((row, rowIndex) => {
           return (
-            <div className={rowIndex}>
+            <div className='node-wrapper'>
               {row.map((node, nodeIndex) => (
-                <Node></Node>
+                <Node />
               ))}
             </div>
           );

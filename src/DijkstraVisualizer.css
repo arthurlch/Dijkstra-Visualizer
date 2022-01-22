@@ -1,3 +1,11 @@
 .grid {
-  margin: 100px 0 0;
+  width: 100%;
+  margin-top: 100px;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}
+
+.node-wrapper {
+  display: flex;
 }
