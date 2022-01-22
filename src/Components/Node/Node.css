@@ -1,7 +1,14 @@
 .node {
   width: 25px;
   height: 25px;
-  border: 1px solid rgb(248, 175, 244);
+  border: 1px solid rgb(209, 220, 255);
   display: inline-block;
-  margin: 0;
+}
+
+.node-finish {
+  background-color: rgb(112, 255, 155);
+}
+
+.node-end {
+  background-color: rgb(255, 76, 121);
 }
