@@ -19,7 +19,7 @@
 
 .node-visited {
   animation-name: visitedAnimation;
-  animation-duration: 1s;
+  animation-duration: 1.2s;
   animation-timing-function: ease-out;
   animation-delay: 0;
   animation-direction: alternate;
@@ -30,8 +30,8 @@
 
 @keyframes visitedAnimation {
   0% {
-    transform: scale(0.2);
-    transform: translate(120px, 50%);
+    transform: scale(0.3);
+    transform: translate(50px, 50%);
     background-color: rgba(0, 0, 66, 0.75);
   }
 
