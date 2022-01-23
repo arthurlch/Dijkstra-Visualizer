@@ -39,6 +39,7 @@ export default class DijkstraVisualizer extends Component {
     const newGrid = getNewGridWithToggledWall(this.state.grid, row, col);
     this.setState({ grid: newGrid });
   }
+
   handdleMouseUp() {
     this.setState({ mouseIsPressed: false });
   }
@@ -50,23 +51,26 @@ export default class DijkstraVisualizer extends Component {
     const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
     const visitedNodeOrdered = dijkstra(grid, startNode, finishNode);
     const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
-    this.animateDijktra(visitedNodeOrdered, nodesInShortestPathOrder); // keep track of node for animations
+    this.animateDijkstra(visitedNodeOrdered, nodesInShortestPathOrder); // keep track of node for animations
   }
 
-  animateDijktra(visitedNodeOrdered) {
-    for (let i = 0; i < visitedNodeOrdered; i++) {
+  animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder) {
+    for (let i = 0; i <= visitedNodesInOrder.length; i++) {
+      if (i === visitedNodesInOrder.length) {
+        setTimeout(() => {
+          this.animateShortestPath(nodesInShortestPathOrder);
+        }, 10 * i);
+        return;
+      }
       setTimeout(() => {
-        const node = visitedNodeOrdered[i];
-        const newGrid = this.state.grid.slice();
-        const newNode = {
-          ...node,
-          isVisited: true,
-        };
-        newGrid[node.row][node.col] = newNode;
-        this.setState({ grid: newGrid });
-      }, 1000 * i);
+        const node = visitedNodesInOrder[i];
+        document.getElementById(`node-${node.row}-${node.col}`).className =
+          'node node-visited';
+      }, 10 * i);
     }
   }
+
+  shortPathAnimate() {} // define here
 
   render() {
     const { grid, mouseIsPressed } = this.state;
