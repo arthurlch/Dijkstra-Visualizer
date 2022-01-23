@@ -1,6 +1,6 @@
 .grid {
   width: 80%;
-  margin-top: 100px;
+  margin-top: 60px;
   text-align: center;
   align-items: center;
   align-content: center;
@@ -12,4 +12,28 @@
   text-align: center;
   align-items: center;
   align-content: center;
+}
+
+.btn-wrapper {
+  margin-top: 30px;
+  margin-left: 300px;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  align-content: center;
+}
+
+.btn {
+  background-color: blue;
+  color: white;
+  padding: 9px 9px 9px 9px;
+  border-radius: 10px;
+  border: blue solid 1px;
+  font-size: 15px;
+  font-weight: 600;
+}
+
+.btn:hover {
+  background-color: rgb(29, 29, 122);
+  color: white;
 }

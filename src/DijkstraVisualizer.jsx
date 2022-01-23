@@ -73,12 +73,13 @@ export default class DijkstraVisualizer extends Component {
 
   render() {
     const { grid, mouseIsPressed } = this.state;
-
     return (
       <>
-        <button onClick={() => this.visualizeDijkstra()}>
-          Visualize Algorithm
-        </button>
+        <div className='btn-wrapper'>
+          <button className='btn' onClick={() => this.visualizeDijkstra()}>
+            Visualize Algorithm
+          </button>
+        </div>
         <div className='grid'>
           {grid.map((row, rowIndex) => {
             return (
