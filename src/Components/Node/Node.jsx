@@ -2,10 +2,6 @@ import { React, Component } from 'react';
 import './Node.css';
 
 export default class Node extends Component {
-  constructor(props) {
-    super();
-    this.state = {};
-  }
   render() {
     const {
       isFinish,
@@ -27,11 +23,11 @@ export default class Node extends Component {
       : '';
     return (
       <div
+        id={`node-${row}-${col}`}
         className={`node ${exClassName}`}
-        id={`node ${row}-${col}`}
-        onMouseDown={onMouseDown(row, col)}
-        onMouseEnter={onMouseEnter(row, col)}
-        onMouseUp={onMouseUp()}></div>
+        onMouseDown={() => onMouseDown(row, col)}
+        onMouseEnter={() => onMouseEnter(row, col)}
+        onMouseUp={() => onMouseUp()}></div>
     );
   }
 }
