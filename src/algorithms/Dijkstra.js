@@ -1,7 +1,7 @@
 // source https://en.wikipedia.org/wiki/Dijkstra%27s_algorithm
 // source: levelup.gitconnected.com/finding-the-shortest-path-in-javascript-dijkstras-algorithm-8d16451eea34
 
-https: export function dijkstra(grid, startNode, finishNode) {
+export function dijkstra(grid, startNode, finishNode) {
   const visitedNodesInOrder = [];
   startNode.distance = 0;
   const unvisitedNodes = getAllNodes(grid);

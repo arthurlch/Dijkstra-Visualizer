@@ -74,7 +74,7 @@ export default class DijkstraVisualizer extends Component {
   }
 
   render() {
-    const { grid, mouseIsPressed } = this.state;
+    const { grid } = this.state;
 
     return (
       <>
