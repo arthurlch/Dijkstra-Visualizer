@@ -13,22 +13,6 @@ export default class DijkstraVisualizer extends Component {
 
   componentDidMount() {
     // draw the grid
-    const nodes = [];
-    let numberOfRow = 25;
-    let numberOfColumn = 40;
-    for (let row = 0; row < numberOfRow; row++) {
-      const currRow = [];
-      for (let col = 0; col < numberOfColumn; col++) {
-        const currNode = {
-          col,
-          row,
-          isStart: row === 15 && col === 5,
-          isFinish: row === 15 && col === 35,
-        };
-        currRow.push(currNode);
-      }
-      nodes.push(currRow);
-    }
     this.setState({ nodes });
   }
 
@@ -42,22 +26,31 @@ export default class DijkstraVisualizer extends Component {
   }
 
   render() {
-    const { nodes } = this.state;
+    const { grid, mouseIsPressed } = this.state;
 
     return (
       <>
         <button onClick={() => this.DijkstraVisualize}>Vizualise</button>
         <div className='grid'>
-          {nodes.map((row, rowIndex) => {
+          {grid.map((row, rowIndex) => {
             return (
               <div className='node-wrapper' key={rowIndex}>
                 {row.map((node, nodeIndex) => {
-                  const { isStart, isFinish } = node;
+                  const { row, col, isWall, isStart, isFinish } = node;
                   return (
                     <Node
                       key={nodeIndex}
                       isStart={isStart}
                       isFinish={isFinish}
+                      isWall={isWall}
+                      mouseIsPressed={mouseIsPressed}
+                      onMouseDown={(row, col) => this.handleMouseDown(row, col)}
+                      onMouseEnter={(row, col) =>
+                        this.handleMouseEnter(row, col)
+                      }
+                      onMouseUp={() => this.handleMouseUp()}
+                      col={col}
+                      row={row}
                     />
                   );
                 })}
@@ -69,3 +62,38 @@ export default class DijkstraVisualizer extends Component {
     );
   }
 }
+
+const getInitialGrid = () => {
+  const grid = [];
+  let numberOfRow = 25;
+  let numberOfColumn = 40;
+  for (let row = 0; row < numberOfRow; row++) {
+    const currRow = [];
+    for (let col = 0; col < numberOfColumn; col++) {
+      currRow.push(createNode(col, row));
+    }
+    grid.push(currNode);
+  }
+  return grid;
+};
+
+const createNode = (col, row) => {
+  return {
+    col,
+    row,
+    isStart: row === START_NODE_ROW && col === START_NODE_COL,
+    isFinish: row === FINISH_NODE_ROW && col === FINISH_NODE_COL,
+    distance: Infinity, // have to define distance that cannot be reach,
+    isVisited: false,
+    isWall: false,
+    previousNode: null,
+  };
+};
+
+const getNewGridWithToggledWall = (grid, row, col) => {
+  const newGrid = grid.slice();
+  const node = newGrid([row][col]);
+  const newNode = { ...node, isWall: !node.isWall };
+  newGrid[row][col] = newNode;
+  return newGrid;
+};
