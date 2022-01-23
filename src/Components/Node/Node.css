@@ -12,3 +12,7 @@
 .node-finish {
   background-color: rgb(255, 76, 121);
 }
+
+.node-visited {
+  background-color: aqua;
+}

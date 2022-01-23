@@ -9,11 +9,7 @@ import {
   FINISH_NODE_COL,
 } from './constant';
 // Grid
-import {
-  getInitialGrid,
-  createNode,
-  getNewGridWithToggledWall,
-} from './draw/DrawGrid';
+import { getInitialGrid, getNewGridWithToggledWall } from './draw/DrawGrid';
 // Node component
 import Node from './Components/Node/Node';
 // Algorithm
@@ -41,10 +37,10 @@ export default class DijkstraVisualizer extends Component {
   handleMouseEnter(row, col) {
     if (!this.state.mouseIsPressed) return;
     const newGrid = getNewGridWithToggledWall(this.state.grid, row, col);
-    this.state({ grid: newGrid });
+    this.setState({ grid: newGrid });
   }
   handdleMouseUp() {
-    this.state({ mouseIsPressed: false });
+    this.setState({ mouseIsPressed: false });
   }
 
   // Dijkstra visual setup
@@ -83,13 +79,15 @@ export default class DijkstraVisualizer extends Component {
             return (
               <div className='node-wrapper' key={rowIndex}>
                 {row.map((node, nodeIndex) => {
-                  const { isVisited, isStart, isFinish } = node;
+                  const { row, col, isStart, isFinish, isWall } = node;
                   return (
                     <Node
                       key={nodeIndex}
+                      isWall={isWall}
+                      col={col}
+                      row={row}
                       isStart={isStart}
                       isFinish={isFinish}
-                      isVisited={isVisited}
                       mouseIsPressed={mouseIsPressed}
                       onMouseDown={(row, col) => this.handleMouseDown(row, col)}
                       onMouseUp={() => this.handdleMouseUp()}
