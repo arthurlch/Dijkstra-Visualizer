@@ -15,7 +15,7 @@ export const getInitialGrid = () => {
     for (let col = 0; col < numberOfColumn; col++) {
       currRow.push(createNode(col, row));
     }
-    grid.push(currNode);
+    grid.push(currRow);
   }
   return grid;
 };
