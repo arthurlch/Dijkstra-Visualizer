@@ -61,8 +61,6 @@ export default class DijkstraVisualizer extends Component {
     }
   }
 
-  animateShortestPath() {} // define here
-
   visualizeDijkstra() {
     const { grid } = this.state;
     const startNode = grid[START_NODE_ROW][START_NODE_COL];
@@ -72,13 +70,17 @@ export default class DijkstraVisualizer extends Component {
     this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
   }
 
+  animateShortestPath() {
+    for (let i = 0; i < nodesInShortestPathOrder.length; i++) {}
+  }
+
   render() {
     const { grid, mouseIsPressed } = this.state;
     return (
       <>
         <div className='btn-wrapper'>
           <button className='btn' onClick={() => this.visualizeDijkstra()}>
-            Visualize Algorithm
+            Visualize Dijkstra Algorithm
           </button>
           <h4 className='instruction'>
             Click on the grid and hold to draw walls!
