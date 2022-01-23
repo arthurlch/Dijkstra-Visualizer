@@ -45,20 +45,27 @@ export default class DijkstraVisualizer extends Component {
     const { nodes } = this.state;
 
     return (
-      <div className='grid'>
-        {nodes.map((row, rowIndex) => {
-          return (
-            <div className='node-wrapper' key={rowIndex}>
-              {row.map((node, nodeIndex) => {
-                const { isStart, isFinish } = node;
-                return (
-                  <Node key={nodeIndex} isStart={isStart} isFinish={isFinish} />
-                );
-              })}
-            </div>
-          );
-        })}
-      </div>
+      <>
+        <button onClick={() => this.DijkstraVisualize}>Vizualise</button>
+        <div className='grid'>
+          {nodes.map((row, rowIndex) => {
+            return (
+              <div className='node-wrapper' key={rowIndex}>
+                {row.map((node, nodeIndex) => {
+                  const { isStart, isFinish } = node;
+                  return (
+                    <Node
+                      key={nodeIndex}
+                      isStart={isStart}
+                      isFinish={isFinish}
+                    />
+                  );
+                })}
+              </div>
+            );
+          })}
+        </div>
+      </>
     );
   }
 }
