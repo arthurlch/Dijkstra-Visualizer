@@ -60,7 +60,7 @@ export default class DijkstraVisualizer extends Component {
     }
   }
 
-  shortPathAnimate() {} // define here
+  animateShortestPath() {} // define here
 
   visualizeDijkstra() {
     const { grid } = this.state;
