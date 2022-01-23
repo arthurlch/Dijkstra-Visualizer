@@ -40,7 +40,7 @@ export default class DijkstraVisualizer extends Component {
     this.setState({ grid: newGrid });
   }
 
-  handdleMouseUp() {
+  handleMouseUp() {
     this.setState({ mouseIsPressed: false });
   }
 
