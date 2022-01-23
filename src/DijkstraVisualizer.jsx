@@ -54,8 +54,10 @@ export default class DijkstraVisualizer extends Component {
     const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
     const visitedNodeOrdered = dijkstra(grid, startNode, finishNode);
     const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
-    this.animateDijktra(visitedNodeOrdered, nodesInShortestPathOrder); // keep track of node for animations
+    // this.animateDijktra(visitedNodeOrdered, nodesInShortestPathOrder); // keep track of node for animations
   }
+
+  // animateDijktra still not done ..
 
   render() {
     const { grid, mouseIsPressed } = this.state;
