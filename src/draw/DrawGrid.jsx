@@ -1,5 +1,4 @@
-// Grid related fn
-
+// Grid related fn and setup
 export const getInitialGrid = () => {
   const grid = [];
   let numberOfRow = 25;

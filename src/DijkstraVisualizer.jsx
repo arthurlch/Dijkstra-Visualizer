@@ -29,10 +29,25 @@ export default class DijkstraVisualizer extends Component {
   }
 
   componentDidMount() {
-    // draw the grid
-    this.setState({ nodes });
+    const grid = getInitialGrid(); // get and initial the basic grid
+    this.setState({ grid });
   }
 
+  // Eventing
+  handleMouseDown(row, col) {
+    const newGrid = getNewGridWithToggledWall(this.state.grid, row, col);
+    this.setState({ grid: newGrid, mouseIsPressed: true });
+  }
+  handleMouseEnter(row, col) {
+    if (!this.state.mouseIsPressed) return;
+    const newGrid = getNewGridWithToggledWall(this.state.grid, row, col);
+    this.state({ grid: newGrid });
+  }
+  handdleMouseUp() {
+    this.state({ mouseIsPressed: false });
+  }
+
+  // Dijkstra visual setup
   DijkstraVisualize() {
     const { grid } = this.state;
     const startNode = grid[START_NODE_ROW][START_NODE_COL];
