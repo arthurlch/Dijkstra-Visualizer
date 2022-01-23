@@ -1,4 +1,11 @@
 // Grid related fn and setup
+import {
+  START_NODE_COL,
+  START_NODE_ROW,
+  FINISH_NODE_ROW,
+  FINISH_NODE_COL,
+} from '../constant';
+
 export const getInitialGrid = () => {
   const grid = [];
   let numberOfRow = 25;
