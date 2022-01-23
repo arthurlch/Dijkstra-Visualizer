@@ -34,7 +34,7 @@ export const createNode = (col, row) => {
 };
 
 export const getNewGridWithToggledWall = (grid, row, col) => {
-  const newGrid = grid.slice();
+  const newGrid = grid.slice(); // O squared complexity ouch.
   const node = newGrid[row][col];
   const newNode = { ...node, isWall: !node.isWall };
   newGrid[row][col] = newNode;
