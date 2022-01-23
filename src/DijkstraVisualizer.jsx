@@ -74,7 +74,7 @@ export default class DijkstraVisualizer extends Component {
   }
 
   render() {
-    const { grid } = this.state;
+    const { grid, mouseIsPressed } = this.state;
 
     return (
       <>
@@ -94,7 +94,9 @@ export default class DijkstraVisualizer extends Component {
                       mouseIsPressed={mouseIsPressed}
                       onMouseDown={(row, col) => this.handleMouseDown(row, col)}
                       onMouseUp={() => this.handdleMouseUp()}
-                      onMouseEnter={(col, row) => this.handleMouseEnter()}
+                      onMouseEnter={(col, row) =>
+                        this.handleMouseEnter(row, col)
+                      }
                     />
                   );
                 })}
