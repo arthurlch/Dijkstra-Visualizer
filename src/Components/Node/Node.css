@@ -42,12 +42,12 @@
 
   75% {
     transform: scale(0.8);
-    background-color: rgba(23, 150, 235, 0.75);
+    background-color: rgba(248, 9, 136, 0.75);
   }
 
   100% {
     transform: scale(1);
-    background-color: rgba(123, 7, 255, 0.966);
+    background-color: rgba(150, 86, 223, 0.897);
   }
 }
 
