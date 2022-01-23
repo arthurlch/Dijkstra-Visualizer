@@ -54,7 +54,6 @@ export default class DijkstraVisualizer extends Component {
       }
       setTimeout(() => {
         const node = visitedNodesInOrder[i];
-        // should be replaced with a React Reference!!!!!!!!!
         document.getElementById(`node-${node.row}-${node.col}`).className =
           'node node-visited';
       }, 10 * i);
@@ -70,13 +69,13 @@ export default class DijkstraVisualizer extends Component {
     this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
   }
 
-  animateShortestPath() {
+  animateShortestPath(nodesInShortestPathOrder) {
     for (let i = 0; i < nodesInShortestPathOrder.length; i++) {
       setTimeout(() => {
         const node = nodesInShortestPathOrder[i];
         document.getElementById(`node-${node.row}-${node.col}`).className =
           'node node-shortest-path';
-      }, 100 * i);
+      }, 50 * i);
     }
   }
 
