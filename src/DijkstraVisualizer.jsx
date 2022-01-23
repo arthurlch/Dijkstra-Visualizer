@@ -54,37 +54,43 @@ export default class DijkstraVisualizer extends Component {
     const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
     const visitedNodeOrdered = dijkstra(grid, startNode, finishNode);
     const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
-    // this.animateDijktra(visitedNodeOrdered, nodesInShortestPathOrder); // keep track of node for animations
+    this.animateDijktra(visitedNodeOrdered, nodesInShortestPathOrder); // keep track of node for animations
   }
 
   // animateDijktra still not done ..
+
+  animateDijktra(visitedNodeOrdered) {
+    for (const node of visitedNodeOrdered) {
+      const newGrid = this.state.grid.slice();
+      const newNode = {
+        ...node,
+        isVisited: true,
+      };
+      newGrid[node.row][node.col] = newNode;
+      setTimeout(() => {
+        this.setState({ grid: newGrid });
+      }, 100);
+    }
+  }
 
   render() {
     const { grid, mouseIsPressed } = this.state;
 
     return (
       <>
-        <button onClick={() => this.DijkstraVisualize}>Vizualise</button>
+        <button onClick={() => this.DijkstraVisualize()}>Vizualise</button>
         <div className='grid'>
           {grid.map((row, rowIndex) => {
             return (
               <div className='node-wrapper' key={rowIndex}>
                 {row.map((node, nodeIndex) => {
-                  const { row, col, isWall, isStart, isFinish } = node;
+                  const { isVisited, isStart, isFinish } = node;
                   return (
                     <Node
                       key={nodeIndex}
                       isStart={isStart}
                       isFinish={isFinish}
-                      isWall={isWall}
-                      mouseIsPressed={mouseIsPressed}
-                      onMouseDown={(row, col) => this.handleMouseDown(row, col)}
-                      onMouseEnter={(row, col) =>
-                        this.handleMouseEnter(row, col)
-                      }
-                      onMouseUp={() => this.handleMouseUp()}
-                      col={col}
-                      row={row}
+                      isVisited={isVisited}
                     />
                   );
                 })}
