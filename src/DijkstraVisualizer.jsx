@@ -91,6 +91,10 @@ export default class DijkstraVisualizer extends Component {
                       isStart={isStart}
                       isFinish={isFinish}
                       isVisited={isVisited}
+                      mouseIsPressed={mouseIsPressed}
+                      onMouseDown={(row, col) => this.handleMouseDown(row, col)}
+                      onMouseUp={() => this.handdleMouseUp()}
+                      onMouseEnter={(col, row) => this.handleMouseEnter()}
                     />
                   );
                 })}
