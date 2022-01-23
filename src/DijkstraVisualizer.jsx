@@ -1,19 +1,30 @@
 import { React, Component } from 'react';
+// Styling
 import './DijkstraVisualizer.css';
+// CONSTANT DATA
 import {
   START_NODE_COL,
   START_NODE_ROW,
   FINISH_NODE_ROW,
   FINISH_NODE_COL,
 } from './constant';
+// Grid
+import {
+  getInitialGrid,
+  createNode,
+  getNewGridWithToggledWall,
+} from './draw/DrawGrid';
+// Node component
 import Node from './Components/Node/Node';
+// Algorithm
 import { dijkstra, getNodesInShortestPathOrder } from './algorithms/Dijkstra';
 
 export default class DijkstraVisualizer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      nodes: [],
+      grid: [],
+      mouseIsPressed: false,
     };
   }
 
