@@ -14,7 +14,7 @@ export default class Node extends Component {
       row,
       isWall,
       onMouseDown,
-      onMouseENter,
+      onMouseEnter,
       onMouseUp,
     } = this.props;
 
@@ -26,7 +26,12 @@ export default class Node extends Component {
       ? 'node-wall'
       : '';
     return (
-      <div className={`node ${exClassName}`} id={`node ${row}-${col}`}></div>
+      <div
+        className={`node ${exClassName}`}
+        id={`node ${row}-${col}`}
+        onMouseDown={onMouseDown(row, col)}
+        onMouseEnter={onMouseEnter(row, col)}
+        onMouseUp={onMouseUp()}></div>
     );
   }
 }
