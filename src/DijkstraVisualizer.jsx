@@ -57,19 +57,18 @@ export default class DijkstraVisualizer extends Component {
     this.animateDijktra(visitedNodeOrdered, nodesInShortestPathOrder); // keep track of node for animations
   }
 
-  // animateDijktra still not done ..
-
   animateDijktra(visitedNodeOrdered) {
-    for (const node of visitedNodeOrdered) {
-      const newGrid = this.state.grid.slice();
-      const newNode = {
-        ...node,
-        isVisited: true,
-      };
-      newGrid[node.row][node.col] = newNode;
+    for (let i = 0; i < visitedNodeOrdered; i++) {
       setTimeout(() => {
+        const node = visitedNodeOrdered[i];
+        const newGrid = this.state.grid.slice();
+        const newNode = {
+          ...node,
+          isVisited: true,
+        };
+        newGrid[node.row][node.col] = newNode;
         this.setState({ grid: newGrid });
-      }, 100);
+      }, 1000 * i);
     }
   }
 
