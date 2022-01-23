@@ -54,6 +54,7 @@ export default class DijkstraVisualizer extends Component {
       }
       setTimeout(() => {
         const node = visitedNodesInOrder[i];
+        // should be replaced with a React Reference!!!!!!!!!
         document.getElementById(`node-${node.row}-${node.col}`).className =
           'node node-visited';
       }, 10 * i);
@@ -79,7 +80,11 @@ export default class DijkstraVisualizer extends Component {
           <button className='btn' onClick={() => this.visualizeDijkstra()}>
             Visualize Algorithm
           </button>
+          <h4 className='instruction'>
+            Click on the grid and hold to draw walls!
+          </h4>
         </div>
+
         <div className='grid'>
           {grid.map((row, rowIndex) => {
             return (

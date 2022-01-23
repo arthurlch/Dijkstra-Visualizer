@@ -21,6 +21,7 @@
   text-align: center;
   align-items: center;
   align-content: center;
+  display: inline-block;
 }
 
 .btn {
@@ -36,4 +37,9 @@
 .btn:hover {
   background-color: rgb(29, 29, 122);
   color: white;
+  border: solid 1px white;
+}
+
+.instruction {
+  font-size: 14px;
 }
