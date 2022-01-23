@@ -1,6 +1,7 @@
 import { React, Component } from 'react';
 import './DijkstraVisualizer.css';
 import Node from './Components/Node/Node';
+import { dijkstra, getNodesInShortestPathOrder } from './algorithms/Dijkstra';
 
 export default class DijkstraVisualizer extends Component {
   constructor(props) {
@@ -29,6 +30,15 @@ export default class DijkstraVisualizer extends Component {
       nodes.push(currRow);
     }
     this.setState({ nodes });
+  }
+
+  DijkstraVisualize() {
+    const { grid } = this.state;
+    const startNode = grid[START_NODE_ROW][START_NODE_COL];
+    const finishNode = grid[FINISH_NODE_ROW][FINISH_NODE_COL];
+    const visitedNodeOrdered = dijkstra(grid, startNode, finishNode);
+    const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
+    this.animateDijktra(visitedNodeOrdered, nodesInShortestPathOrder); // keep track of node for animations
   }
 
   render() {
