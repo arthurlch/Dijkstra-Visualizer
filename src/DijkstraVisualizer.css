@@ -43,6 +43,9 @@
   border: solid 1px white;
 }
 
+.btn-reset {
+  margin-left: 10px;
+}
 .instruction {
   font-size: 14px;
 }

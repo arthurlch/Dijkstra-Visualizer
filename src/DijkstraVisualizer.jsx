@@ -91,8 +91,11 @@ export default class DijkstraVisualizer extends Component {
           <button className='btn' onClick={() => this.visualizeDijkstra()}>
             Visualize Dijkstra Algorithm
           </button>
-          <button className='btn' onClick={() => this.resetGrid()}>
+          <button className='btn btn-reset' onClick={() => this.resetGrid()}>
             reset
+          </button>
+          <button className='btn btn-getdata' onClick={() => this.getData()}>
+            Get data
           </button>
           <h4 className='instruction'>
             Click on the grid and hold to draw walls!
