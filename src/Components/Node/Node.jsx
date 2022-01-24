@@ -14,7 +14,7 @@ export default class Node extends Component {
       onMouseUp,
     } = this.props;
 
-    const exClassName = isFinish
+    const exClassName = isFinish // can be changed for type
       ? 'node-finish'
       : isStart
       ? 'node-start'
