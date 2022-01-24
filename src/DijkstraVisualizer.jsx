@@ -79,6 +79,10 @@ export default class DijkstraVisualizer extends Component {
     }
   }
 
+  resetGrid() {
+    this.setState({ grid: getInitialGrid() });
+  }
+
   render() {
     const { grid, mouseIsPressed } = this.state;
     return (
@@ -86,6 +90,9 @@ export default class DijkstraVisualizer extends Component {
         <div className='btn-wrapper'>
           <button className='btn' onClick={() => this.visualizeDijkstra()}>
             Visualize Dijkstra Algorithm
+          </button>
+          <button className='btn' onClick={() => this.resetGrid()}>
+            reset
           </button>
           <h4 className='instruction'>
             Click on the grid and hold to draw walls!

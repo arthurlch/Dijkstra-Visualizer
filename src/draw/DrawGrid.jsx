@@ -7,6 +7,7 @@ import {
 } from '../constant';
 
 export const getInitialGrid = () => {
+  // use to reset grid!
   const grid = [];
   for (let row = 0; row < 25; row++) {
     const currentRow = [];

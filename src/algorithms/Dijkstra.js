@@ -20,8 +20,9 @@ export function dijkstra(grid, startNode, finishNode) {
   }
 }
 
+// heap datastructure is more efficient, sorting now add quadratic complexity on the final call of the algo
 function sortNodesByDistance(unvisitedNodes) {
-  unvisitedNodes.sort((nodeA, nodeB) => nodeA.distance - nodeB.distance);
+  unvisitedNodes.sort((nodeA, nodeB) => nodeA.distance - nodeB.distance); // ugly
 }
 
 function updateUnvisitedNeighbors(node, grid) {
